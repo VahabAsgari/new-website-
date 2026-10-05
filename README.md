@@ -8,23 +8,30 @@ python3 -m http.server 8000   # then visit http://localhost:8000
 
 ## Pages
 
-| Page | Process | Purpose |
+| URL | Process | Purpose |
 |---|---|---|
-| `index.html` | Line engraving | The firm: method, people, stewardship, contact |
-| `firm.html` | Cyanotype | Conduct and record — performance without numbers |
-| `platform.html` | Cyanotype | The trading platform for the Middle East |
+| `/` | Line engraving | The firm: how we work, people, careers problem, questions |
+| `/firm/` | Cyanotype | Disclosure, principles, investor questions (no performance figures) |
+| `/product/` | Cyanotype | The Joveyra Platform for the Middle East |
 
-## The two processes
+The home page opens with a short drawn film (Galileo's notebook of Jupiter's moons,
+January 1610, becoming the Joveyra mark). It plays once per visit; click or Escape skips it.
+The footer of `/` and `/firm/` carries a live engraving of Jupiter whose four moons move
+at their real orbital periods.
 
-All imagery is public-domain museum material (The Met Open Access), re-printed in code
-so every image obeys one rule:
+## Images
 
-- **Engraving** — the paper of the print becomes Joveyra blue, the ink becomes black.
-  Only the engraved lines carry the image.
-- **Cyanotype** — light becomes paper white, shadow becomes Prussian blue, with
-  uneven exposure, grain and a brushed emulsion edge.
+All imagery is public domain, re-drawn in code by `tools/build_images.py`:
 
-To add or change an image, edit the manifest in `tools/build_images.py` and run:
+- **Engraving** — the print is reduced to its lines (two tones only), cut out of its paper,
+  and its edges dissolve through an ordered dither. Lines are drawn in paper colour on ultramarine.
+- **Cyanotype** — light becomes paper, shadow becomes Prussian blue, with uneven exposure,
+  grain and a brushed emulsion edge.
+- **Diagrams** (`tools/diagrams.py`) — Galileo's Jupiter observations, Kepler's nested solids,
+  Huygens's cycloidal pendulum, Galton's board, a Persian star rosette, drawn from their geometry.
+
+Sources are listed in `SOURCES` inside `tools/build_images.py`; put them in `tools/source/`
+(not committed) and run:
 
 ```
 pip install opencv-python-headless numpy
@@ -33,10 +40,12 @@ python3 tools/build_images.py
 
 ## System
 
-- Type: Antonio (display), EB Garamond (text), IBM Plex Mono (labels) — self-hosted in `assets/fonts`.
-- Colour: engraving blue `#0f2160`, Prussian `#06204f`, paper `#e9edf6`, copper `#c47c4a` (details only).
-- Motion: Lenis inertial scroll, images on a deeper parallax plane, slow reveals,
-  cross-page view transitions. All motion is disabled under `prefers-reduced-motion`.
+- Type: Roboto Flex (variable; condensed widths for headings, normal for text), IBM Plex Mono
+  for tags, Vazirmatn for Persian. All self-hosted in `assets/fonts`.
+- Colour: ultramarine `#1424c4`, deep `#0b1675`, paper `#eceef4`; cyanotype pages use
+  Prussian `#123b80` / `#06204f` on `#efeee8`.
+- Motion: Lenis inertial scroll, dither development of plates on arrival, the opening film,
+  the Jupiter footer. All of it is disabled under `prefers-reduced-motion`.
 
 ## Open items
 

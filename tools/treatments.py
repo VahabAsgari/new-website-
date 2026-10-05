@@ -61,7 +61,7 @@ def _noise(shape, sigma):
     return n / (n.std() + 1e-6)
 
 
-def cyanotype(light, edge=True):
+def cyanotype(light, edge=True, edge_to=None):
     """light: 0..1, 1 = unexposed paper (white), 0 = full exposure (deep blue)."""
     h, w = light.shape
     t = light + 0.06 * _noise((h, w), max(h, w) / 18) \
@@ -74,8 +74,9 @@ def cyanotype(light, edge=True):
     if edge:  # brushed emulsion border that dissolves into the page colour
         yy, xx = np.mgrid[0:h, 0:w].astype(np.float32)
         d = np.minimum.reduce([xx, yy, w - 1 - xx, h - 1 - yy]) / max(h, w)
-        m = np.clip((d + 0.012 * _noise((h, w), 6) - 0.01) / 0.05, 0, 1)[..., None]
-        out = CYAN_DEEP + (out - CYAN_DEEP) * m
+        m = np.clip((d + 0.009 * _noise((h, w), 5) - 0.012) / 0.035, 0, 1)[..., None]
+        base = CYAN_DEEP if edge_to is None else edge_to
+        out = base + (out - base) * m
     return out
 
 

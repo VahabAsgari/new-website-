@@ -1,172 +1,174 @@
 <!doctype html>
-<html lang="en" class="process-engraving">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Joveyra</title>
-<meta name="description" content="Joveyra is a quantitative investment firm. Our models set the price. Our people set the models.">
-<meta name="theme-color" content="#0f2160">
+<meta name="description" content="Joveyra is a quantitative investment firm. Our researchers derive pricing models by hand; the models trade.">
+<meta name="theme-color" content="#1424c4">
 <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
-<link rel="preload" href="assets/fonts/antonio-latin-200-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/img/hercules-1600.webp" as="image" media="(min-width: 901px)">
+<link rel="preload" href="assets/fonts/roboto-flex-latin-full-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/site.css">
+<script>try{if(!sessionStorage.getItem("jv-film")&&!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("film-on")}catch(e){}</script>
 </head>
 <body>
 
-<header class="nav">
-  <div class="wrap">
-    <ul>
-      <li><a class="item" href="#method">Method</a></li>
-      <li><a class="item" href="#people">People</a></li>
-      <li><a class="item" href="firm.html">The Firm</a></li>
-    </ul>
-    <a class="mark" href="index.html" aria-label="Joveyra — home">
-      <svg viewBox="0 0 870 648" fill="currentColor" aria-hidden="true"><use href="assets/logo.svg#mark" width="870" height="648"/></svg>
-    </a>
-    <ul class="right">
-      <li><a class="item" href="platform.html">Platform</a></li>
-      <li><a class="item" href="#contact">Contact</a></li>
-      <li><span class="lang" title="Persian edition in preparation"><b>EN</b> / FA</span></li>
-    </ul>
-    <button class="menu-btn" aria-expanded="false">Menu</button>
+<div class="film" id="film" hidden>
+  <canvas aria-hidden="true"></canvas>
+  <div class="film-mark"><svg viewBox="0 0 870 648" fill="currentColor" role="img" aria-label="Joveyra"><use href="assets/logo.svg#mark" width="870" height="648"/></svg></div>
+  <span class="film-date"></span>
+  <button class="skip" type="button">Skip</button>
+</div>
+
+<header class="hero on-blue">
+  <nav class="nav" aria-label="Main">
+    <div class="wrap">
+      <ul class="l">
+        <li><a class="i" href="#work">How we work</a></li>
+        <li><a class="i" href="#people">People</a></li>
+        <li><a class="i" href="firm/">The Firm</a></li>
+      </ul>
+      <a class="mark" href="./" aria-label="Joveyra home"><svg viewBox="0 0 870 648" fill="currentColor" aria-hidden="true"><use href="assets/logo.svg#mark" width="870" height="648"/></svg></a>
+      <ul class="r">
+        <li><a class="i" href="product/">Platform</a></li>
+        <li><a class="i" href="#questions">Questions</a></li>
+        <li><span class="lang" title="Persian edition in preparation">EN / FA</span></li>
+      </ul>
+      <button class="menu" type="button" aria-expanded="false">Menu</button>
+    </div>
+  </nav>
+  <div class="wrap grid">
+    <div class="copy">
+      <h1 class="h1">Markets, measured.</h1>
+      <p class="lede">Joveyra is a quantitative investment firm. Our researchers, most of them physicists and mathematicians, derive pricing models by hand. The models trade.</p>
+      <div class="btns">
+        <a class="btn solid" href="#work">How we work</a>
+        <a class="btn" href="#people">Careers</a>
+      </div>
+    </div>
+    <div class="art">
+      <img class="plate-art" src="assets/img/hevelius-1400.webp" srcset="assets/img/hevelius-900.webp 900w, assets/img/hevelius-1400.webp 1400w" sizes="(max-width: 960px) 100vw, 50vw" width="1400" height="1920" alt="Johannes and Elisabetha Hevelius measuring the position of a star with their great brass sextant, Danzig, 1673">
+    </div>
   </div>
 </header>
 
 <main>
 
-  <!-- I. Hero -->
-  <section class="hero">
-    <div class="hero-art"><img data-depth="0.18" src="assets/img/hercules-1600.webp" srcset="assets/img/hercules-900.webp 900w, assets/img/hercules-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 58vw" alt="Engraving of a colossal classical statue of Hercules"></div>
+  <section id="work" class="sec on-paper">
     <div class="wrap">
-      <div class="copy">
-        <p class="label reveal"><span class="n">I</span>Joveyra</p>
-        <h1 class="display d-xl reveal d1">Markets are not random.<br>They are complicated.</h1>
-        <p class="lede dim reveal d2">Joveyra is a quantitative investment firm. Our models set the price. Our people set the models.</p>
+      <div class="sec-head">
+        <h2 class="h2" style="color:var(--blue)">How we work</h2>
+        <p>Every strategy at Joveyra exists twice: on paper, in the hand of the person who derived it, and in the model that trades it.</p>
       </div>
-      <div class="hero-foot reveal d3">
-        <span class="label">Scroll</span>
-        <span class="plate"><b>Pl. I</b> — Commodus as Hercules, after the antique. Hendrick Goltzius, 1592</span>
+      <div class="cards">
+        <article class="card">
+          <span class="tag">#1 Research</span>
+          <h3 class="h3">Observed before it is modelled</h3>
+          <p>We start from data, the way Galileo started from four points of light beside Jupiter, recorded night after night.</p>
+          <div class="plate"><img data-develop src="assets/img/card-galileo.webp" width="900" height="900" alt="Jupiter and its four moons recorded on successive nights" loading="lazy"></div>
+        </article>
+        <article class="card">
+          <span class="tag">#2 Models</span>
+          <h3 class="h3">Derived by hand</h3>
+          <p>Each pricing model begins as mathematics on paper: derived, argued over and proven before it becomes code.</p>
+          <div class="plate"><img data-develop src="assets/img/card-kepler.webp" width="900" height="900" alt="Kepler's model of the planetary orbits nested between the five regular solids, 1596" loading="lazy"></div>
+        </article>
+        <article class="card">
+          <span class="tag">#3 Execution</span>
+          <h3 class="h3">Traded by the model</h3>
+          <p>Our pricing models place every trade, on time and without discretion, impulse or fatigue.</p>
+          <div class="plate"><img data-develop src="assets/img/card-huygens.webp" width="900" height="900" alt="Huygens's pendulum clock and its escapement, 1673" loading="lazy"></div>
+        </article>
+        <article class="card">
+          <span class="tag">#4 Risk</span>
+          <h3 class="h3">Measured before return</h3>
+          <p>Positions are sized by what they can lose. Risk is measured continuously, every moment a market is open.</p>
+          <div class="plate"><img data-develop src="assets/img/card-galton.webp" width="900" height="900" alt="A Galton board: falling shot arranges itself into the normal distribution" loading="lazy"></div>
+        </article>
+        <article class="card">
+          <span class="tag">#5 Infrastructure</span>
+          <h3 class="h3">Built, not bought</h3>
+          <p>Data pipelines, research tools and execution systems are made in-house. We do not run what we cannot explain.</p>
+          <div class="plate"><img data-develop src="assets/img/card-instrument.webp" width="900" height="900" alt="An astronomical instrument built by Hevelius for his own observatory" loading="lazy"></div>
+        </article>
+        <article class="card">
+          <span class="tag">#6 Oversight</span>
+          <h3 class="h3">Answerable to people</h3>
+          <p>Nothing runs unobserved. Every model has an author, and every author answers for what the model does.</p>
+          <div class="plate"><img data-develop src="assets/img/card-sextant.webp" width="900" height="900" alt="Two observers reading one instrument together" loading="lazy"></div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- II. Statement -->
-  <section class="statement sp">
-    <div class="wrap">
-      <span class="label reveal"><span class="n">II</span>Position</span>
-      <h2 class="display d-l reveal d1">We do not predict the future. We price it.</h2>
-    </div>
-  </section>
-
-  <!-- III. Method -->
-  <section id="method" class="sp">
-    <div class="wrap split">
-      <div class="media sticky feather">
-        <div class="frame"><img class="develop" data-depth="0.06" src="assets/img/apollo-1100.webp" srcset="assets/img/apollo-700.webp 700w, assets/img/apollo-1100.webp 1100w" sizes="(max-width: 900px) 100vw, 40vw" alt="Engraving of Apollo, radiant, standing on clouds" loading="lazy"></div>
-        <p class="plate"><b>Pl. II</b> — Apollo. Hendrick Goltzius, 1588</p>
-      </div>
+  <section class="sec band on-blue cyan-preview">
+    <div class="wrap grid">
       <div>
-        <p class="label reveal"><span class="n">III</span>Method</p>
-        <h2 class="title reveal d1">The hand and the model.</h2>
-        <p class="lede reveal d2">Every strategy at Joveyra lives twice: once on paper, in the hand of the person who derived it, and once in the machine that executes it. Neither is allowed to forget the other.</p>
-        <ul class="points">
-          <li class="reveal"><span class="n">i</span><div><h3 class="title">Written by hand</h3><p>Each model begins as mathematics on paper — derived, argued over, proven — long before it becomes code.</p></div></li>
-          <li class="reveal"><span class="n">ii</span><div><h3 class="title">Executed by the model</h3><p>Trades are made by our pricing models. Without impulse, without fatigue, without exception.</p></div></li>
-          <li class="reveal"><span class="n">iii</span><div><h3 class="title">Answerable to us</h3><p>Nothing runs unobserved. Every model has an author, and every author answers for what the model does.</p></div></li>
-        </ul>
+        <span class="tag">Joveyra Platform</span>
+        <h2 class="h2">A trading platform for the Middle East.</h2>
+        <p class="lede">Built on the same principles that run our own capital, in English and Persian, for institutions and professional traders in the region.</p>
+        <div class="btns"><a class="btn solid" href="product/">See the platform</a></div>
       </div>
+      <figure class="print" style="margin:0">
+        <img src="assets/img/astrolabe-900.webp" width="900" height="1202" alt="Cyanotype of a Persian planispheric astrolabe made in Iran in 1654" loading="lazy">
+        <figcaption class="cap">Astrolabe, Iran, 1654. Cyanotype.</figcaption>
+      </figure>
     </div>
   </section>
 
-  <!-- IV. Interlude -->
-  <section class="bleed">
-    <div class="art"><img data-depth="0.12" src="assets/img/farnese-1600.webp" srcset="assets/img/farnese-900.webp 900w, assets/img/farnese-1600.webp 1600w" sizes="100vw" alt="Engraving of the Farnese Hercules seen from behind, at rest" loading="lazy"></div>
-    <div class="wrap">
-      <p class="label reveal"><span class="n">IV</span>Temperament</p>
-      <h2 class="display d-l reveal d1">We are not in a hurry.<br>We are in position.</h2>
-    </div>
-    <p class="plate"><b>Pl. III</b> — The Farnese Hercules. Hendrick Goltzius, c. 1592</p>
-  </section>
-
-  <!-- V. People -->
-  <section id="people" class="sp">
-    <div class="wrap split flip">
-      <div class="media sticky feather">
-        <div class="frame"><img class="develop" data-depth="0.06" src="assets/img/melencolia-1400.webp" srcset="assets/img/melencolia-800.webp 800w, assets/img/melencolia-1400.webp 1400w" sizes="(max-width: 900px) 100vw, 45vw" alt="Dürer's Melencolia I: a winged figure among instruments of geometry" loading="lazy"></div>
-        <p class="plate"><b>Pl. IV</b> — Melencolia I. Albrecht Dürer, 1514</p>
-      </div>
+  <section id="people" class="sec people on-paper">
+    <div class="wrap grid">
+      <div class="portrait plate" style="aspect-ratio:4/5;margin:0"><img data-develop src="assets/img/galileo-portrait.webp" width="900" height="1125" alt="Engraved portrait of Galileo Galilei, 1623" loading="lazy"></div>
       <div>
-        <p class="label reveal"><span class="n">V</span>People</p>
-        <h2 class="title reveal d1">Found at the edge of the solvable.</h2>
-        <p class="lede reveal d2">Most of the people at Joveyra were first noticed at international olympiads in mathematics and physics — at an age when the hardest problem in the room was the only one worth attempting.</p>
-        <p class="dim reveal">We did not hire them for what they knew. We hired them for how they think: patiently, rigorously, and without needing to be told that a problem is difficult.</p>
-        <p class="dim reveal">We do not publish their names. Their work is the signature.</p>
+        <h2 class="h2" style="color:var(--blue)">People</h2>
+        <p class="lede">Most of our researchers were first noticed at international olympiads in mathematics and physics. We hire for how people think, and we judge that by how they solve problems.</p>
+        <div class="problem">
+          <span class="tag" style="color:var(--blue)">Careers: the problem</span>
+          <p class="q">Io, Europa and Ganymede orbit Jupiter in 1.769, 3.551 and 7.155 days. Writing &lambda; for each moon's mean longitude, show that &lambda;<sub>Io</sub> &minus; 3&lambda;<sub>Europa</sub> + 2&lambda;<sub>Ganymede</sub> stays constant, and find its value.</p>
+          <p style="color:var(--text-dim)">Send your solution and a short note about yourself. We read every one.</p>
+          <div class="btns"><a class="btn solid" href="mailto:careers@joveyra.com">careers@joveyra.com</a></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- VI. Stewardship -->
-  <section class="sp" style="padding-top:0">
+  <section id="questions" class="sec faq on-paper" style="padding-top:0">
+    <div class="wrap grid">
+      <h2 class="h2">Questions</h2>
+      <div>
+        <details class="qa"><summary>Does Joveyra manage outside capital?</summary><div class="a">Joveyra manages capital for a small number of qualified investors. We do not solicit; new relationships begin with an introduction.</div></details>
+        <details class="qa"><summary>Do you publish performance?</summary><div class="a">No. Performance is shared in full with investors and, under confidentiality, with qualified prospective investors. <a href="firm/" style="text-decoration:underline">More on the firm</a>.</div></details>
+        <details class="qa"><summary>Who decides what to trade?</summary><div class="a">Pricing models place every trade. Researchers design, test and supervise the models; no trade is placed at someone's discretion.</div></details>
+        <details class="qa"><summary>Who works at Joveyra?</summary><div class="a">Mostly physicists and mathematicians, many of them olympiad medalists, with engineers who build the systems the models run on.</div></details>
+        <details class="qa"><summary>What is the Joveyra Platform?</summary><div class="a">A trading platform we are building for institutions and professional traders in the Middle East, available in English and Persian. <a href="product/" style="text-decoration:underline">See the platform</a>.</div></details>
+        <details class="qa"><summary>How do I apply?</summary><div class="a">Solve the problem above and send your solution to careers@joveyra.com. There is no form and no deadline.</div></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="end on-deep">
+    <canvas class="sky" aria-hidden="true"></canvas>
     <div class="wrap">
-      <p class="label reveal"><span class="n">VI</span>Stewardship</p>
-      <h2 class="display d-m reveal d1" style="max-width:16ch">Capital is a weight, not a number.</h2>
-      <div class="wide develop"><div class="frame feather" style="overflow:hidden"><img data-depth="0.05" src="assets/img/atlas-2000.webp" srcset="assets/img/atlas-1000.webp 1000w, assets/img/atlas-2000.webp 2000w" sizes="100vw" alt="Engraving of Hercules helping Atlas carry the sphere of the heavens" loading="lazy"></div></div>
-      <div class="cols">
-        <div class="reveal"><span class="label"><span class="n">a</span>Carried</span><p>What is entrusted to us is carried, not displayed. We do not advertise results; we account for them.</p></div>
-        <div class="reveal d1"><span class="label"><span class="n">b</span>Measured</span><p>Risk is measured before return, and it is measured every moment the market is open.</p></div>
-        <div class="reveal d2"><span class="label"><span class="n">c</span>Shared</span><p>Two hands on one sphere. Those who carry the weight with us see everything we see.</p></div>
+      <div class="foot">
+        <div>
+          <svg class="mk" viewBox="0 0 870 648" fill="currentColor" aria-hidden="true"><use href="assets/logo.svg#mark" width="870" height="648"/></svg>
+          <span class="t">A quantitative investment firm</span>
+        </div>
+        <div><span class="t">Firm</span><ul><li><a href="#work">How we work</a></li><li><a href="#people">People</a></li><li><a href="firm/">The Firm</a></li></ul></div>
+        <div><span class="t">Platform</span><ul><li><a href="product/">Overview</a></li><li><a href="product/#access">Access</a></li></ul></div>
+        <div><span class="t">Contact</span><ul><li><a href="mailto:office@joveyra.com">office@joveyra.com</a></li><li><a href="mailto:careers@joveyra.com">Careers</a></li></ul></div>
       </div>
-      <p class="plate" style="margin-top:28px"><b>Pl. V</b> — Hercules assisting Atlas. Claude Mellan, 17th century</p>
-      <p style="margin-top:48px"><a class="link" href="firm.html">The Firm <span class="arrow">→</span></a></p>
-    </div>
-  </section>
-
-  <!-- VII. The instrument -->
-  <section class="sp">
-    <div class="wrap split">
-      <div class="media feather">
-        <div class="frame"><img class="develop" data-depth="0.08" src="assets/img/moon-1400.webp" srcset="assets/img/moon-800.webp 800w, assets/img/moon-1400.webp 1400w" sizes="(max-width: 900px) 100vw, 40vw" alt="Engraving of the full moon, drawn from telescope observation" loading="lazy"></div>
-        <p class="plate"><b>Pl. VI</b> — The full moon, from the telescope. Claude Mellan, 1635</p>
+      <div class="legal">
+        <p>Nothing on this website is an offer to sell, or a solicitation of an offer to buy, any security, fund interest or investment service. Images: Hevelius, Machinae coelestis (1673); Galileo, Sidereus nuncius (1610); Kepler, Mysterium cosmographicum (1596); Huygens, Horologium oscillatorium (1673); Villamena, portrait of Galileo (1623, The Met); astrolabe by Muhammad Zaman (1654, The Met). All public domain, redrawn by Joveyra.</p>
+        <span>&copy; 2026 Joveyra</span>
       </div>
-      <div style="align-self:center">
-        <p class="label reveal"><span class="n">VII</span>Instrument</p>
-        <h2 class="title reveal d1">We built instruments for ourselves. Now we are building one for the region.</h2>
-        <p class="dim reveal d2">A trading platform, made by Joveyra, for the Middle East alone.</p>
-        <p class="reveal d3" style="margin-top:36px"><a class="link" href="platform.html">The Platform <span class="arrow">→</span></a></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- VIII. Contact -->
-  <section id="contact" class="contact sp">
-    <div class="wrap">
-      <p class="label reveal"><span class="n">VIII</span>Contact</p>
-      <h2 class="display d-l reveal d1">By introduction.</h2>
-      <p class="dim reveal d2">Joveyra does not solicit. Conversations begin with an introduction.</p>
-      <p class="reveal d3" style="margin-top:36px"><a class="link" href="mailto:office@joveyra.com">office@joveyra.com <span class="arrow">→</span></a></p>
     </div>
   </section>
 
 </main>
 
-<footer>
-  <div class="foot-mark" aria-hidden="true"><svg viewBox="0 0 870 648" fill="currentColor"><use href="assets/logo.svg#mark" width="870" height="648"/></svg></div>
-  <div class="wrap">
-    <div class="foot-grid">
-      <div><span class="label">Joveyra</span><p class="dim" style="margin-top:14px;font-size:16px">A quantitative investment firm.</p></div>
-      <div><span class="label">Firm</span><ul><li><a href="#method">Method</a></li><li><a href="#people">People</a></li><li><a href="firm.html">The Firm</a></li></ul></div>
-      <div><span class="label">Platform</span><ul><li><a href="platform.html">Overview</a></li><li><a href="platform.html#access">Access</a></li></ul></div>
-      <div><span class="label">Contact</span><ul><li><a href="mailto:office@joveyra.com">Office</a></li><li><a href="#contact">By introduction</a></li></ul></div>
-    </div>
-    <div class="foot-legal">
-      <p>Nothing on this website constitutes an offer to sell, or a solicitation of an offer to buy, any security, fund interest or investment service. Information is provided for general purposes only and is not investment advice.</p>
-      <span class="label">© 2026 Joveyra</span>
-    </div>
-    <p class="credits">Plates: The Metropolitan Museum of Art, Open Access (public domain) — Goltzius, The Emperor Commodus as Hercules (390226); Apollo (340036); Farnese Hercules (343588). Dürer, Melencolia I (360018). Mellan, Hercules Assisting Atlas (393412); Full Moon (393543). Treated by Joveyra.</p>
-  </div>
-</footer>
-
 <script src="assets/vendor/lenis.min.js"></script>
+<script src="assets/js/jove.js"></script>
 <script src="assets/js/site.js"></script>
 </body>
 </html>
