@@ -14,6 +14,7 @@
 @view-transition { navigation: auto; }
 
 :root {
+  color-scheme: dark;
   --ink: #02040b;
   --paper: #e9edf6;
   --paper-dim: rgba(233, 237, 246, .66);
