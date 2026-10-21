@@ -9,7 +9,7 @@
 <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/roboto-flex-latin-full-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/site.css">
-<script>document.documentElement.classList.add("js");try{if(!sessionStorage.getItem("jv-film")&&!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("film-on")}catch(e){}</script>
+<script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
 
@@ -40,22 +40,16 @@
 </nav>
 
 <main>
-  <section class="hero" aria-label="Joveyra">
-    <video class="v-loop" muted playsinline loop poster="assets/film/hero-poster.webp" aria-hidden="true">
-      <source src="assets/film/hero.webm" type="video/webm">
+  <section class="hero" aria-label="Joveyra" style="--focus:50% 50%">
+    <video class="v-loop" muted playsinline loop preload="auto" poster="assets/film/hero-poster.webp" aria-hidden="true">
       <source src="assets/film/hero.mp4" type="video/mp4">
     </video>
-    <video class="v-open" muted playsinline preload="none" poster="assets/film/open-poster.webp" aria-hidden="true">
-      <source data-src="assets/film/open.webm" type="video/webm">
-      <source data-src="assets/film/open.mp4" type="video/mp4">
-    </video>
-    <button class="skip" type="button">Skip</button>
     <div class="hero-copy wrap">
       <div>
         <h1 class="display">Joveyra</h1>
         <p class="lede">Joveyra is a quantitative investment firm. Pricing models, built and supervised by our researchers, place every trade.</p>
       </div>
-      <p class="cap">Pl. I &middot; Head of Zeus Ammon &middot; Roman, ca. 120&ndash;160 CE &middot; The Met</p>
+      <p class="cap">Pl. I &middot; Lockheed SR-71 Blackbird &middot; line-screen film, 56 s</p>
     </div>
   </section>
 
