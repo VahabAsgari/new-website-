@@ -55,7 +55,7 @@
     return p && p.catch ? p : Promise.resolve();
   }
 
-  var loop = document.querySelector(".hero .v-loop");
+  var loop = document.querySelector(".hero .v-loop, .h-hero .v-loop");
   var open = document.querySelector(".hero .v-open");
   var skip = document.querySelector(".hero .skip");
 
@@ -114,5 +114,20 @@
     settle.forEach(function (el) { so.observe(el); });
   } else {
     settle.forEach(function (el) { el.classList.add("in"); });
+  }
+
+  /* plates drift against the scroll, by their distance from mid-screen */
+  var deep = document.querySelectorAll("[data-depth]");
+  if (deep.length && !still) {
+    (function depth() {
+      var h = innerHeight;
+      deep.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.bottom < -h || r.top > 2 * h) return;
+        var d = Math.max(-1, Math.min(1, (r.top + r.height / 2 - h / 2) / h));
+        el.style.setProperty("--d", d.toFixed(4));
+      });
+      requestAnimationFrame(depth);
+    })();
   }
 })();

@@ -8,10 +8,12 @@
 <meta name="theme-color" content="#070a1c">
 <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/roboto-flex-latin-full-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/ibm-plex-sans-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/film/sat-poster.webp" as="image">
 <link rel="stylesheet" href="assets/css/site.css">
 <script>document.documentElement.classList.add("js")</script>
 </head>
-<body>
+<body class="home">
 
 <header class="nav">
   <div class="wrap">
@@ -40,128 +42,107 @@
 </nav>
 
 <main>
-  <section class="hero" aria-label="Joveyra" style="--focus:50% 50%">
-    <video class="v-loop" muted playsinline loop preload="auto" poster="assets/film/hero-poster.webp" aria-hidden="true">
-      <source src="assets/film/hero.mp4" type="video/mp4">
-    </video>
-    <div class="hero-copy wrap">
-      <div>
-        <h1 class="display">Joveyra</h1>
-        <p class="lede">Joveyra is a quantitative investment firm. Pricing models, built and supervised by our researchers, place every trade.</p>
-      </div>
-      <p class="cap">Pl. I &middot; Lockheed SR-71 Blackbird &middot; line-screen film, 56 s</p>
+  <section class="h-hero" aria-label="Joveyra">
+    <div class="h-media">
+      <video class="v-loop" muted playsinline loop preload="auto" poster="assets/film/sat-poster.webp" aria-hidden="true">
+        <source src="assets/film/sat-1280.mp4" type="video/mp4" media="(max-width: 900px)">
+        <source src="assets/film/sat.webm" type="video/webm">
+        <source src="assets/film/sat.mp4" type="video/mp4">
+      </video>
+    </div>
+    <h1 class="h-word">Joveyra</h1>
+  </section>
+
+  <section class="h-open" id="research" aria-label="Mathematics">
+    <div class="h-grid">
+      <span class="h-idx mono">01</span>
+      <p class="h-say">We have built Joveyra on mathematics, in the hands of people who have mastered it.</p>
     </div>
   </section>
 
-  <section class="pale statement" aria-label="The firm">
-    <div class="wrap">
-      <div class="rule2"></div>
-      <p class="mono">Joveyra</p>
-      <div>
-        <p>Joveyra is a quantitative investment firm. Our researchers, most of them physicists and mathematicians, build the pricing models that trade our capital.</p>
-        <p>The models place every trade; the people who wrote them answer for each one.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="plate" id="research" style="--focus:60% 40%">
-    <img class="settle" src="assets/img/epikouros-1600.webp" srcset="assets/img/epikouros-800.webp 800w, assets/img/epikouros-1600.webp 1600w" sizes="100vw" width="1600" height="1000" alt="Line engraving of the head of Epikouros, bearded, turned slightly to the left." loading="lazy" decoding="async">
-    <div class="txt">
-      <span class="num">I</span>
-      <h2 class="h2">Research</h2>
-      <p class="lede">Every model begins as a question about how a price is formed. Researchers work it out on paper, test it against decades of data, and discard most of what they try.</p>
-    </div>
-    <p class="cap">Pl. II &middot; Epikouros &middot; Roman copy of a Greek original, 2nd c. CE &middot; The Met</p>
-  </section>
-
-  <section class="plate r" style="--focus:40% 40%">
-    <img class="settle" src="assets/img/herm-1600.webp" srcset="assets/img/herm-800.webp 800w, assets/img/herm-1600.webp 1600w" sizes="100vw" width="1600" height="1000" alt="Line engraving of a bearded head from a Roman herm." loading="lazy" decoding="async">
-    <div class="txt">
-      <span class="num">II</span>
-      <h2 class="h2">Execution</h2>
-      <p class="lede">The models place every trade, in every market we hold, at any hour. No position is opened or closed at someone's discretion.</p>
-    </div>
-    <p class="cap">Pl. III &middot; Head from a herm &middot; Roman, 1st&ndash;2nd c. CE &middot; The Met</p>
-  </section>
-
-  <section class="plate" style="--focus:60% 40%">
-    <img class="settle" src="assets/img/strategos-1600.webp" srcset="assets/img/strategos-800.webp 800w, assets/img/strategos-1600.webp 1600w" sizes="100vw" width="1600" height="1000" alt="Line engraving of the helmeted head of a Greek general." loading="lazy" decoding="async">
-    <div class="txt">
-      <span class="num">III</span>
-      <h2 class="h2">Supervision</h2>
-      <p class="lede">Each model has an author, and the author answers for what it does. Risk is measured continuously, and positions are sized by what they can lose.</p>
-    </div>
-    <p class="cap">Pl. IV &middot; Head of a Greek general &middot; Roman, 1st&ndash;2nd c. CE &middot; The Met</p>
-  </section>
-
-  <section class="people" id="people" aria-labelledby="people-h">
-    <figure>
-      <img class="settle" src="assets/img/youth-1200.webp" srcset="assets/img/youth-720.webp 720w, assets/img/youth-1200.webp 1200w" sizes="(max-width: 860px) 100vw, 42vw" width="1200" height="1500" alt="Line engraving of the head of a youth, Greek, fourth century BCE." loading="lazy" decoding="async">
-      <figcaption class="cap">Pl. V &middot; Head of a youth &middot; Greek, 4th c. BCE &middot; The Met</figcaption>
-    </figure>
-    <div class="txt">
-      <span class="num">IV</span>
-      <h2 class="h2" id="people-h">People</h2>
-      <p class="lede">Most of our researchers were first noticed at the international olympiads in mathematics and physics. We hire for how people think, and we judge that by how they solve problems.</p>
-      <div class="problem">
-        <span class="mono">A problem</span>
-        <p class="q">Io, Europa and Ganymede orbit Jupiter in 1.769, 3.551 and 7.155 days. Writing &lambda; for each moon's mean longitude, show that &lambda;<sub>Io</sub> &minus; 3&lambda;<sub>Europa</sub> + 2&lambda;<sub>Ganymede</sub> stays constant, and find its value.</p>
-      </div>
-      <p class="body">Send your solution to <a class="link" href="mailto:careers@joveyra.com">careers@joveyra.com</a>. There is no form and no deadline.</p>
-    </div>
-  </section>
-
-  <section class="pale band" aria-labelledby="platform-h">
-    <div class="wrap">
-      <div>
-        <span class="num">V</span>
-        <h2 class="h2" id="platform-h">Joveyra Platform</h2>
-      </div>
-      <div class="side">
-        <p class="body">We are building a trading platform for institutions and professional traders in the Middle East, in English and Persian, on the infrastructure that runs our own capital.</p>
-        <a class="link" href="product/index.html">The platform <span aria-hidden="true">&rarr;</span></a>
+  <section class="h-people" id="people" aria-labelledby="h-people">
+    <div class="h-grid">
+      <h2 class="h-head" id="h-people">Measured against the strongest minds of a generation</h2>
+      <div class="h-copy">
+        <p>Our ranks include international Olympiad medalists: people who have faced the hardest problems of their generation and solved them under pressure.</p>
+        <p>That standard is not borrowed from a few. It is the standard of the firm.</p>
       </div>
     </div>
   </section>
 
-  <section class="faq" aria-labelledby="faq-h">
-    <div class="wrap">
-      <h2 class="h2" id="faq-h">Questions</h2>
-      <div>
-        <details class="qa"><summary>Does Joveyra manage outside capital?</summary><div class="a">Joveyra manages capital for a small number of qualified investors. We do not solicit; new relationships begin with an introduction.</div></details>
-        <details class="qa"><summary>Do you publish performance?</summary><div class="a">No. Performance is shared in full with investors and, under confidentiality, with qualified prospective investors.</div></details>
-        <details class="qa"><summary>Who decides what to trade?</summary><div class="a">Pricing models place every trade. Researchers design, test and supervise the models; no trade is placed at someone's discretion.</div></details>
-        <details class="qa"><summary>Who works here?</summary><div class="a">Mostly physicists and mathematicians, many of them olympiad medalists, with engineers who build the systems the models run on.</div></details>
-        <details class="qa"><summary>What is Joveyra Platform?</summary><div class="a">A trading platform we are building for institutions and professional traders in the Middle East, available in English and Persian. <a href="product/index.html">More on the platform</a>.</div></details>
-        <details class="qa"><summary>How do I apply?</summary><div class="a">Solve the problem above and send your solution to <a href="mailto:careers@joveyra.com">careers@joveyra.com</a>. There is no form and no deadline.</div></details>
+  <figure class="h-flag" data-depth aria-label="The flag">
+    <div class="h-media">
+      <video data-lazy muted playsinline loop preload="none" poster="assets/film/flag-poster.webp" aria-hidden="true">
+        <source data-src="assets/film/flag-1280.mp4" type="video/mp4" media="(max-width: 900px)">
+        <source data-src="assets/film/flag.webm" type="video/webm">
+        <source data-src="assets/film/flag.mp4" type="video/mp4">
+      </video>
+    </div>
+  </figure>
+
+  <section class="h-steady" aria-label="Under pressure">
+    <div class="h-grid">
+      <span class="h-idx mono">02</span>
+      <p class="h-say">We are the same firm in a hard year as in a good one.</p>
+      <div class="h-copy">
+        <p>Lasting trust belongs to the firm that does not change under pressure.</p>
+        <p class="h-coda">Pressure finds us unchanged.</p>
       </div>
     </div>
   </section>
+
+  <section class="h-world" aria-labelledby="h-world">
+    <div class="h-grid">
+      <figure class="h-dish" data-depth>
+        <div class="h-media">
+          <img src="assets/img/dish-1600.webp" srcset="assets/img/dish-800.webp 800w, assets/img/dish-1600.webp 1600w, assets/img/dish-2160.webp 2160w" sizes="(max-width: 860px) 100vw, 48vw" width="1600" height="1747" alt="Line engraving of a large radio dish turned to the sky." loading="lazy" decoding="async">
+        </div>
+      </figure>
+      <div class="h-side">
+        <span class="h-idx mono">03</span>
+        <h2 class="h-head" id="h-world">Across the world, as one firm</h2>
+        <div class="h-copy">
+          <p>We are one team under one name, wherever we work.</p>
+          <p>The next decade belongs to the firm that can work across the world as one. Joveyra was founded for that work.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="h-close" aria-label="Our generation">
+    <div class="h-grid">
+      <p class="h-pre">In every generation, one firm shapes how the world&rsquo;s capital moves. In ours,</p>
+      <p class="h-claim">We are the chosen ones.</p>
+    </div>
+  </section>
+
+  <figure class="h-tail" data-depth aria-hidden="true">
+    <div class="h-media">
+      <video data-lazy muted playsinline loop preload="none" poster="assets/film/sr71-fire-poster.webp">
+        <source data-src="assets/film/sr71-fire-1280.mp4" type="video/mp4" media="(max-width: 900px)">
+        <source data-src="assets/film/sr71-fire.webm" type="video/webm">
+        <source data-src="assets/film/sr71-fire.mp4" type="video/mp4">
+      </video>
+      <span class="h-grain"></span>
+    </div>
+  </figure>
 </main>
 
-<footer class="end">
-  <video data-lazy muted playsinline loop preload="none" poster="assets/film/end-poster.webp" aria-hidden="true">
-    <source data-src="assets/film/end.webm" type="video/webm">
-    <source data-src="assets/film/end.mp4" type="video/mp4">
-  </video>
-  <p class="cap plate-cap">Pl. VI &middot; Demosthenes &middot; Roman, 2nd c. CE &middot; The Met</p>
-  <div class="inner">
-    <div class="foot">
-      <a class="fbrand" href="./" aria-label="Joveyra, home">
-        <svg viewBox="0 0 870 648" fill="currentColor" aria-hidden="true"><use href="assets/logo.svg#mark" width="870" height="648"/></svg>
-        <span class="brand-word">Joveyra</span>
-      </a>
-      <div class="fcols">
-        <div><span class="mono">Firm</span><ul><li><a href="#research">Research</a></li><li><a href="#people">People</a></li><li><a href="firm/index.html">The Firm</a></li></ul></div>
-        <div><span class="mono">Platform</span><ul><li><a href="product/index.html">Overview</a></li><li><a href="mailto:platform@joveyra.com">Access</a></li></ul></div>
-        <div><span class="mono">Contact</span><ul><li><a href="mailto:office@joveyra.com">office@joveyra.com</a></li><li><a href="mailto:careers@joveyra.com">careers@joveyra.com</a></li></ul></div>
-      </div>
-      <p class="fa" lang="fa" dir="rtl">نسخهٔ فارسی به‌زودی</p>
-      <div class="legal">
-        <p>Nothing on this website is an offer to sell, or a solicitation of an offer to buy, any security, fund interest or investment service.</p>
-        <p>Plates engraved from photographs of objects in The Metropolitan Museum of Art, released under its Open Access policy (CC0).</p>
-        <p>&copy; 2026 Joveyra</p>
-      </div>
+<footer class="h-foot">
+  <div class="wrap">
+    <a class="fbrand" href="./" aria-label="Joveyra, home">
+      <svg viewBox="0 0 870 648" fill="currentColor" aria-hidden="true"><use href="assets/logo.svg#mark" width="870" height="648"/></svg>
+      <span class="brand-word">Joveyra</span>
+    </a>
+    <div class="fcols">
+      <div><span class="mono">Firm</span><ul><li><a href="#research">Research</a></li><li><a href="#people">People</a></li><li><a href="firm/index.html">The Firm</a></li></ul></div>
+      <div><span class="mono">Platform</span><ul><li><a href="product/index.html">Overview</a></li><li><a href="mailto:platform@joveyra.com">Access</a></li></ul></div>
+      <div><span class="mono">Contact</span><ul><li><a href="mailto:office@joveyra.com">office@joveyra.com</a></li><li><a href="mailto:careers@joveyra.com">careers@joveyra.com</a></li></ul></div>
+    </div>
+    <p class="fa" lang="fa" dir="rtl">نسخهٔ فارسی به‌زودی</p>
+    <div class="legal">
+      <p>Nothing on this website is an offer to sell, or a solicitation of an offer to buy, any security, fund interest or investment service.</p>
+      <p>&copy; 2026 Joveyra</p>
     </div>
   </div>
 </footer>
