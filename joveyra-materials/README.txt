@@ -11,8 +11,14 @@ JOVEYRA - FINAL APPROVED MATERIALS (one file per asset)
 2-flag/flag-alpha.js             The small player script for the file above.
 2-flag/flag-demo.html            Open-in-browser test page (needs a web server).
 3-dish/dish-2160.webp            Radio dish engraving, blue grade, 2160 px.
-4-sr71-fire/sr71-fire.mp4        SR-71 afterburner loop, blue grade.
-5-sr71-stills/sr71-tail-1080.webp  SR-71 tail view, blue grade.
+                                 TRANSPARENT sky (dish and ground stay solid).
+4-sr71-fire/sr71-fire-alpha.mp4  SR-71 tail + afterburner loop, blue grade, with a
+                                 TRANSPARENT background. Tail is solid; the fire is
+                                 partly see-through, like real flame. Same format as
+                                 the flag: play it with sr71-fire-alpha.js.
+4-sr71-fire/sr71-fire-alpha.js   Player script (same as flag-alpha.js).
+4-sr71-fire/fire-demo.html       Open-in-browser test page (needs a web server).
+5-sr71-stills/sr71-tail-1080.webp  SR-71 tail view, blue grade, TRANSPARENT background.
 5-sr71-stills/sr71-top-1080.webp   SR-71 top view, blue grade.
 6-sr71-rotation/sr71-rotation-hevc.mp4  SR-71 rotation, original file.
 
@@ -33,3 +39,22 @@ If the MP4 is on a different domain or CDN than the page, that server must send
 the header  Access-Control-Allow-Origin: *  or the flag will not draw.
 The script pauses the video when it is off screen and shows a still frame for
 visitors who have "reduce motion" turned on.
+
+HOW TO USE THE SR-71 FIRE VIDEO
+-------------------------------
+Exactly like the flag, with the fire file names:
+
+     <canvas data-alpha-video="sr71-fire-alpha.mp4" style="width:100%"></canvas>
+     <script src="sr71-fire-alpha.js" defer></script>
+
+If the flag is on the same page, load only ONE of the two scripts - either
+script plays every <canvas data-alpha-video="..."> on the page.
+
+HOW TO USE THE DISH AND SR-71 TAIL STILL
+----------------------------------------
+They are normal images with transparency built in. No script needed:
+
+     <img src="dish-2160.webp" alt="Radio dish" style="width:100%">
+     <img src="sr71-tail-1080.webp" alt="SR-71 tail" style="width:100%">
+
+Whatever colour or image is behind them shows through the transparent parts.
