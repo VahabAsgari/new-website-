@@ -43,7 +43,13 @@ else:            # horizontal banknote engraving
 sb = (S0>0.5).astype(np.uint8)
 thin = up(GB((sb - cv2.morphologyEx(sb, cv2.MORPH_OPEN, cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(9,9)))).astype(np.float32), 0.6))
 # pole: a quiet grey stroke, not a white bar; hands keep a faint solid fill
-pole = np.zeros_like(Y0); cv2.fillPoly(pole, [np.int32([[700,55],[722,62],[625,300],[598,296]])], 1)
+pole = np.zeros_like(Y0); px = lambda y: 710.7 - 0.463*(y-65)   # the pole's real thin line
+cv2.fillPoly(pole, [np.int32([[px(52)-5,52],[px(52)+5,52],[px(300)+5,300],[px(300)-5,300]])], 1)
+# pale see-through wedge between the pole and the cloth's hoist edge: sky
+yy0, xx0 = np.mgrid[0:h, 0:w]; dpole = xx0 - px(yy0)
+wedge = ((dpole > 4) & (dpole < 30) & (yy0 < 205) & (Y0 > 0.25) & (S0 > 0.5)).astype(np.float32)
+S0 = S0*(1-cv2.dilate(wedge, np.ones((3,3), np.uint8))*(1-pole))
+Ms = GB(up(S0), 0.8)
 pole = up(pole)
 Ls = np.maximum(Ls, thin*(1-pole)*(0.15+0.5*Ts))
 Ls = Ls*(1-pole) + np.maximum(Ls, thin*0.30)*0.75*pole
@@ -94,9 +100,6 @@ msky = (1-Mland-Mh).clip(0,1)
 bg = sky*msky + land*vig*Mland + floor*vig*Mh
 noise = 0.006*np.random.default_rng(3).standard_normal(bg.shape)
 fl = GB(up(flag), 0.6)
-# stray mask sliver along the flag's top edge by the pole: neither cloth nor pole, so it becomes sky
-zone = up(cv2.dilate(flag, np.ones((21,21), np.uint8)))
-Ms = Ms*(1-zone) + Ms*zone*np.maximum(fl, pole)
 full = (bg*(1-Ms) + subj*Ms + noise)
 Ac = (Ms*fl*(1-pole)).clip(0,1)            # cloth + logo alpha
 Ap = (Ms*pole).clip(0,1)                   # pole stays on top, static
@@ -106,7 +109,7 @@ hx, hy = 670*K, 135*K; dx, dy = 0.93, 0.36; L = 270*K
 nx, ny = -dy, dx
 s = (((xx-hx)*dx + (yy-hy)*dy)/L).clip(0, 1.3)
 n = (xx-hx)*nx + (yy-hy)*ny
-N = int(os.environ.get('N', '40')); AMP = float(os.environ.get('AMP', '8.5'))*K
+N = int(os.environ.get('N', '70')); AMP = float(os.environ.get('AMP', '8.5'))*K
 OUT2 = OUT; os.makedirs(OUT2, exist_ok=True)
 x0, y0, x1, y1 = [c*K for c in (190, 20, 1090, 640)]
 nc = 3*K                                   # cloth centre line (n)
