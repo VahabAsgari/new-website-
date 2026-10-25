@@ -86,7 +86,10 @@ vig = (1-0.35*(vx**2+0.6*vy**2)).clip(0.4,1)
 Tsky = stretch(Y, yy<hz-10*K, 1, 99.5)
 sky = (0.03 + 0.07*Tsky**1.5)*vig
 # distant plain above the hill reads as texture in the air: plain sky down to the hill instead
-r0 = hz - 14*K; ext = (0.03 + 0.07*GB(Tsky, 6*K)[r0:r0+1]**1.5)*vig
+# (row sampled from sky pixels only, so the legs crossing it don't streak down into the gaps)
+r0 = hz - 14*K; sk = (Ms0 < 0.05).astype(np.float32)
+Tr = GB(Tsky*sk, 30*K)[r0:r0+1] / np.maximum(GB(sk, 30*K)[r0:r0+1], 1e-4)
+ext = (0.03 + 0.07*Tr**1.5)*vig
 b = 1/(1+np.exp(-np.clip((yy-(hz-24*K))/(4*K),-50,50)))
 sky = sky*(1-b) + ext*b
 Mland = 0*Mland
