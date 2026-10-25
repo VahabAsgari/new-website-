@@ -85,6 +85,11 @@ vy = np.linspace(-1,1,H)[:,None]; vx = np.linspace(-1,1,W)[None,:]
 vig = (1-0.35*(vx**2+0.6*vy**2)).clip(0.4,1)
 Tsky = stretch(Y, yy<hz-10*K, 1, 99.5)
 sky = (0.03 + 0.07*Tsky**1.5)*vig
+# distant plain above the hill reads as texture in the air: plain sky down to the hill instead
+r0 = hz - 14*K; ext = (0.03 + 0.07*GB(Tsky, 6*K)[r0:r0+1]**1.5)*vig
+b = 1/(1+np.exp(-np.clip((yy-(hz-24*K))/(4*K),-50,50)))
+sky = sky*(1-b) + ext*b
+Mland = 0*Mland
 
 def render(fk, crop, tag):
     floor = 0.03 + fk*Lf*(0.45+0.55*Tf)*depth
