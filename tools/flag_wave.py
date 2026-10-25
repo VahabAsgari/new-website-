@@ -21,8 +21,15 @@ def stretch(A, m, a, b):
 
 # subject: men, rocks, flag; photo contrast kept
 flag = np.zeros_like(Y0); cv2.fillPoly(flag, [np.int32([[655,70],[925,170],[880,290],[650,200]])], 1)
+# sky seen through the gaps between the men (blue, brighter than the suits): back to sky
+Ms0 = Ms                                   # tone range stays measured on the original cut
+skyish = ((rgb[...,2]-rgb[...,0]-0.05)/0.06).clip(0,1)*((Y0-0.30)/0.08).clip(0,1)*(1-flag)*(np.mgrid[0:h,0:w][0] > 250)
+S0 = S0*(1-cv2.dilate(skyish, np.ones((3,3), np.uint8)))
+n_, lab, st, _ = cv2.connectedComponentsWithStats((S0>0.5).astype(np.uint8))
+S0 = S0*(st[lab, cv2.CC_STAT_AREA] > 40)
+Ms = GB(up(S0), 0.8); Mh = GB(up(Hl0), 1.5)*(1-Ms)
 logo0 = ((Y0>0.5)*flag*S0).astype(np.float32)
-Ts = stretch(Y, (Ms>0.5)&(up(cv2.dilate(logo0,np.ones((5,5))))<0.1), 1.0, 99.0)
+Ts = stretch(Y, (Ms0>0.5)&(up(cv2.dilate(logo0,np.ones((5,5))))<0.1), 1.0, 99.0)
 # depth: keep the suits dark, only lit planes (shoulders, backs, folds) open up
 Tb = GB(Ts, 14*K)
 Ts = (0.6*Ts + 0.4*Tb + 1.1*(Ts-GB(Ts, 5*K))).clip(0,1)**1.6
