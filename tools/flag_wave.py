@@ -93,8 +93,11 @@ land = 0.035 + 0.35*fk*Ll*(0.4+0.6*Tl)
 msky = (1-Mland-Mh).clip(0,1)
 bg = sky*msky + land*vig*Mland + floor*vig*Mh
 noise = 0.006*np.random.default_rng(3).standard_normal(bg.shape)
-full = (bg*(1-Ms) + subj*Ms + noise)
 fl = GB(up(flag), 0.6)
+# stray mask sliver along the flag's top edge by the pole: neither cloth nor pole, so it becomes sky
+zone = up(cv2.dilate(flag, np.ones((21,21), np.uint8)))
+Ms = Ms*(1-zone) + Ms*zone*np.maximum(fl, pole)
+full = (bg*(1-Ms) + subj*Ms + noise)
 Ac = (Ms*fl*(1-pole)).clip(0,1)            # cloth + logo alpha
 Ap = (Ms*pole).clip(0,1)                   # pole stays on top, static
 still = (bg+noise)*(1-Ms*(1-Ac)) + full*Ms*(1-Ac)   # everything except cloth; sky behind it
@@ -103,17 +106,20 @@ hx, hy = 670*K, 135*K; dx, dy = 0.93, 0.36; L = 270*K
 nx, ny = -dy, dx
 s = (((xx-hx)*dx + (yy-hy)*dy)/L).clip(0, 1.3)
 n = (xx-hx)*nx + (yy-hy)*ny
-N = int(os.environ.get('N', '40')); AMP = float(os.environ.get('AMP', '10'))*K
+N = int(os.environ.get('N', '40')); AMP = float(os.environ.get('AMP', '8.5'))*K
 OUT2 = OUT; os.makedirs(OUT2, exist_ok=True)
 x0, y0, x1, y1 = [c*K for c in (190, 20, 1090, 640)]
+nc = 3*K                                   # cloth centre line (n)
 def field(t):
     ph = 2*math.pi*t
     w = s**1.4
-    a = (np.sin(2*math.pi*1.2*s - 2*ph) + 0.35*np.sin(2*math.pi*2.1*s - 3*ph + 1.1 + 0.5*n/L))
-    e = 0.45*(n/(0.3*L))*np.sin(2*math.pi*1.6*s - 2*ph + 0.7)   # top and bottom edges flap against each other
-    dn = AMP*w*(a + e)                                   # across the cloth
-    ds = -0.35*AMP*w*(np.cos(2*math.pi*1.2*s - 2*ph))    # bunching along it
-    sh = 1 + 0.17*w*np.cos(2*math.pi*1.2*s - 2*ph)       # deeper folds catch light
+    th = 2*math.pi*1.2*s - 2*ph
+    z = np.sin(th) + 0.35*np.sin(2*math.pi*2.1*s - 3*ph + 1.1 + 0.5*n/L)   # depth in/out of the picture
+    e = 0.25*(n/(0.3*L))*np.sin(2*math.pi*1.6*s - 2*ph + 0.7)          # top and bottom edges flap a little
+    dn = AMP*w*(z + e)                                   # sway across the cloth
+    dn += (n-nc)*0.08*w*z                                # perspective: nearer folds taller, farther ones pinch in
+    ds = -0.35*AMP*w*np.cos(th)                          # folds turning away bunch up along the cloth
+    sh = 1 + 0.14*w*np.cos(th) + 0.05*w*z                # lit slopes, receding folds a touch darker
     return dn, ds, sh
 for i in range(N):
     dn, ds, sh = field(i/N)
