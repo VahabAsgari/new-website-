@@ -335,19 +335,18 @@ html:not(.film-on) .skip { opacity: 0; pointer-events: none; }
 
 /* ------------------------------------------------------------ home
    Hero film, then text and plates in turn. Titles in Felix Titling, set as
-   inscriptional capitals: one weight, open tracking, no stretching. Reading
-   text in Plex Sans light. Two text axes on a 12-column grid: titles start at
-   column 3, reading text at column 7; numbered sections hang their index in
-   columns 1-2 under a hairline. The opening line and the close are centred,
-   as bookends. Text never moves; only the plates carry depth (--d, site.js). */
+   inscriptional capitals: light positive tracking, tight leading. Reading text
+   in Plex Sans light. One left edge for everything: each block stacks a small
+   index, its title and a short measure of reading text, flush left, tightly
+   grouped, with wide space between blocks. Text never moves; only the plates
+   carry depth (--d, site.js). */
 body.home {
   --plex: "Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --fs-body: clamp(1.0625rem, .3vw + .98rem, 1.1875rem);
-  --fs-lede: clamp(1.4rem, 2.3vw, 2.25rem);
-  --fs-h2: clamp(1.85rem, 3.3vw, 3.3rem);
-  --fs-claim: clamp(2.2rem, 7.2vw, 7.4rem);
-  --sec: clamp(112px, 17vh, 210px);
-  --row: clamp(36px, 4.4vw, 64px);
+  --fs-body: clamp(1.0625rem, .25vw + 1rem, 1.1875rem);
+  --fs-lede: clamp(2rem, 4.4vw, 4.6rem);
+  --fs-h2: clamp(2.1rem, 4.6vw, 4.9rem);
+  --fs-claim: clamp(2.6rem, 8.6vw, 9.4rem);
+  --sec: clamp(120px, 20vh, 240px);
   animation: h-in 1s ease both;
 }
 @keyframes h-in { from { opacity: 0; } }
@@ -361,9 +360,9 @@ body.home {
 .h-hero .h-media::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: #1a2a8a; mix-blend-mode: color; opacity: .34; }
 .h-hero::after { content: ""; position: absolute; inset: auto 0 0; height: 46%; z-index: 1; pointer-events: none;
   background: linear-gradient(0deg, var(--ground) 0%, rgba(11, 11, 13, .66) 26%, rgba(11, 11, 13, 0) 100%); }
-.h-word { position: absolute; z-index: 2; left: 0; right: 0; bottom: calc(clamp(24px, 5vh, 64px) + env(safe-area-inset-bottom, 0px));
-  margin: 0; text-align: center; font-family: var(--title); font-weight: 400; text-transform: uppercase;
-  font-size: clamp(2.6rem, 10.5vw, 11.5rem); line-height: 1; letter-spacing: .14em; padding-left: .14em; color: var(--line);
+.h-hero .h-grid { position: absolute; z-index: 2; left: 0; right: 0; margin-inline: auto; bottom: calc(clamp(28px, 6vh, 72px) + env(safe-area-inset-bottom, 0px)); }
+.h-word { grid-column: 1 / -1; margin: 0; font-family: var(--title); font-weight: 400; text-transform: uppercase;
+  font-size: clamp(3rem, 12.4vw, 13.5rem); line-height: .86; letter-spacing: .02em; margin-left: -.04em; color: var(--line);
   animation: h-word .7s cubic-bezier(.2, .7, .2, 1) 3.5s both; }
 @keyframes h-word { from { opacity: 0; filter: blur(10px); } to { opacity: 1; filter: blur(0); } }
 
@@ -371,29 +370,28 @@ body.home {
 .h-grid { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter);
   display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: clamp(16px, 2vw, 32px); align-items: start; }
 .h-grid > * { min-width: 0; margin: 0; }
-.h-idx { font-family: var(--mono); font-size: .75rem; line-height: 1; letter-spacing: .18em; color: var(--line-faint); font-variant-numeric: tabular-nums; }
+.h-idx { font-family: var(--mono); font-size: .75rem; line-height: 1; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--line-faint); font-variant-numeric: tabular-nums; }
 .h-lede, .h-head, .h-claim { margin: 0; font-family: var(--title); font-weight: 400; text-transform: uppercase; color: var(--line);
   text-wrap: balance; overflow-wrap: break-word; font-kerning: normal; }
-.h-head { font-size: var(--fs-h2); line-height: 1.14; letter-spacing: .035em; }
-.h-copy { font-family: var(--plex); font-weight: 300; font-size: var(--fs-body); line-height: 1.65;
-  color: var(--line-dim); max-width: 34em; display: grid; gap: 1.1em; text-wrap: pretty; }
+.h-head { font-size: var(--fs-h2); line-height: 1.02; letter-spacing: .015em; }
+.h-copy { font-family: var(--plex); font-weight: 300; font-size: var(--fs-body); line-height: 1.6;
+  color: var(--line-dim); max-width: 30em; display: grid; gap: 1em; text-wrap: pretty; }
 .h-copy p { margin: 0; }
 .h-coda { font-weight: 400; color: var(--line); }
 
-/* opening line: a centred inscription */
-.h-open { padding-block: var(--sec); }
-.h-lede { grid-column: 2 / span 10; justify-self: center; max-width: 26em; text-align: center;
-  font-size: var(--fs-lede); line-height: 1.4; letter-spacing: .06em; }
+/* a block: index, title, reading text; one edge, tight steps */
+.h-block { display: grid; justify-items: start; gap: 0; }
+.h-block .h-idx { margin-bottom: clamp(18px, 1.8vw, 28px); }
+.h-block .h-copy { margin-top: clamp(24px, 2.6vw, 40px); }
 
-/* numbered sections: hairline, index, title on axis 3, reading text on axis 7 */
+/* opening line */
+.h-open { padding-block: var(--sec) 0; }
+.h-lede { grid-column: 1 / span 10; font-size: var(--fs-lede); line-height: 1.04; letter-spacing: .015em; }
+
+/* numbered sections */
 .h-sec { padding-block: var(--sec); }
-.h-sec .h-grid { row-gap: var(--row); }
-.h-sec .h-grid::before { content: ""; grid-column: 1 / -1; height: 1px; background: var(--hair);
-  margin-bottom: calc(var(--row) * -1 + clamp(20px, 2.2vw, 32px)); }
-.h-sec .h-idx { grid-column: 1 / span 2; padding-top: .55em; }
-.h-sec .h-head { grid-column: 3 / span 8; }
-.h-sec .h-copy { grid-column: 7 / span 5; }
-.h-people { padding-top: 0; }
+.h-sec .h-block { grid-column: 1 / span 9; }
 
 /* plates */
 [data-depth] { --d: 0; }
@@ -401,21 +399,20 @@ body.home {
 .h-flag .h-media { aspect-ratio: 16 / 9; max-height: 100svh; width: 100%; }
 .h-flag video, .h-tail video { transform: translate3d(0, calc(var(--d) * -4%), 0) scale(1.1); will-change: transform; }
 
-/* the dish on the left, the text on the right, its last line on the plate's foot */
+/* the dish on the left, the block on the right, both from one top line */
 .h-world { padding-block: 0 var(--sec); }
 .h-dish { grid-column: 1 / span 6; margin: 0; }
 .h-dish .h-media { aspect-ratio: 1600 / 1747; }
 .h-dish img { transform: translate3d(0, calc(var(--d) * -3%), 0) scale(1.08); will-change: transform; }
-.h-side { grid-column: 8 / span 5; align-self: end; display: grid; gap: clamp(28px, 3vw, 44px);
-  padding-top: clamp(20px, 2.2vw, 32px); border-top: 1px solid var(--hair); }
-.h-side .h-head { font-size: clamp(1.85rem, 2.9vw, 2.9rem); }
+.h-side { grid-column: 8 / span 5; }
+.h-side .h-head { font-size: clamp(2rem, 3.6vw, 3.8rem); }
 
-/* the close: lead-in and claim, centred */
-.h-close { padding-block: var(--sec) calc(var(--sec) * .8); }
-.h-close .h-grid { row-gap: clamp(24px, 3vw, 44px); }
-.h-pre { grid-column: 3 / span 8; justify-self: center; max-width: 30em; text-align: center; font-family: var(--plex); font-weight: 300;
-  font-size: clamp(1.1rem, 1.45vw, 1.45rem); line-height: 1.55; color: var(--line-dim); text-wrap: balance; }
-.h-claim { grid-column: 1 / -1; text-align: center; font-size: var(--fs-claim); line-height: 1.06; letter-spacing: .04em; padding-left: .04em; }
+/* the close: lead-in, then the claim, flush left */
+.h-close { padding-block: 0 calc(var(--sec) * .8); }
+.h-close .h-grid { row-gap: clamp(24px, 2.6vw, 40px); }
+.h-pre { grid-column: 1 / span 5; max-width: 26em; font-family: var(--plex); font-weight: 300;
+  font-size: clamp(1.1rem, 1.3vw, 1.35rem); line-height: 1.5; color: var(--line-dim); text-wrap: pretty; }
+.h-claim { grid-column: 1 / -1; font-size: var(--fs-claim); line-height: .94; letter-spacing: .01em; margin-left: -.03em; }
 
 /* the last plate runs past both edges */
 .h-tail { margin: 0; overflow: hidden; width: 100%; }
@@ -437,12 +434,10 @@ body.home {
 .h-foot .wrap { display: grid; gap: clamp(40px, 6vh, 64px); }
 
 @media (max-width: 860px) {
-  body.home { --sec: 104px; --row: 28px; }
+  body.home { --sec: 112px; }
   .h-grid { grid-template-columns: minmax(0, 1fr); }
-  .h-lede, .h-sec .h-idx, .h-sec .h-head, .h-sec .h-copy, .h-dish, .h-side, .h-pre, .h-claim { grid-column: 1; }
-  .h-sec .h-grid::before { margin-bottom: -8px; }
-  .h-sec .h-idx { padding-top: 0; }
-  .h-world .h-grid { row-gap: 40px; }
+  .h-word, .h-lede, .h-sec .h-block, .h-dish, .h-side, .h-pre, .h-claim { grid-column: 1; }
+  .h-world .h-grid { row-gap: 48px; }
   .h-dish { margin-inline: calc(var(--gutter) * -1); }
   .h-flag .h-media { aspect-ratio: 4 / 5; }
   .h-tail .h-media { width: 150vw; margin-left: -25vw; aspect-ratio: 4 / 3; }
