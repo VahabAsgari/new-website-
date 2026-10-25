@@ -103,16 +103,17 @@ hx, hy = 670*K, 135*K; dx, dy = 0.93, 0.36; L = 270*K
 nx, ny = -dy, dx
 s = (((xx-hx)*dx + (yy-hy)*dy)/L).clip(0, 1.3)
 n = (xx-hx)*nx + (yy-hy)*ny
-N = int(os.environ.get('N', '40')); AMP = float(os.environ.get('AMP', '7'))*K
+N = int(os.environ.get('N', '40')); AMP = float(os.environ.get('AMP', '10'))*K
 OUT2 = OUT; os.makedirs(OUT2, exist_ok=True)
 x0, y0, x1, y1 = [c*K for c in (190, 20, 1090, 640)]
 def field(t):
     ph = 2*math.pi*t
     w = s**1.4
     a = (np.sin(2*math.pi*1.2*s - 2*ph) + 0.35*np.sin(2*math.pi*2.1*s - 3*ph + 1.1 + 0.5*n/L))
-    dn = AMP*w*a                                         # across the cloth
-    ds = -0.25*AMP*w*(np.cos(2*math.pi*1.2*s - 2*ph))    # slight bunching along it
-    sh = 1 + 0.10*w*np.cos(2*math.pi*1.2*s - 2*ph)       # folds catch light
+    e = 0.45*(n/(0.3*L))*np.sin(2*math.pi*1.6*s - 2*ph + 0.7)   # top and bottom edges flap against each other
+    dn = AMP*w*(a + e)                                   # across the cloth
+    ds = -0.35*AMP*w*(np.cos(2*math.pi*1.2*s - 2*ph))    # bunching along it
+    sh = 1 + 0.17*w*np.cos(2*math.pi*1.2*s - 2*ph)       # deeper folds catch light
     return dn, ds, sh
 for i in range(N):
     dn, ds, sh = field(i/N)
