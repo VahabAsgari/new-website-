@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flag transparency test</title>
+<style>
+  body { margin: 0; min-height: 100vh; display: grid; place-items: end center;
+         background: linear-gradient(180deg, #c8102e 0%, #f2c14e 100%); }
+  canvas { display: block; width: 100%; }
+</style>
+</head>
+<body>
+  <!-- The coloured background should show through everywhere except the men, flag, pole, rocks and floor. -->
+  <canvas data-alpha-video="flag-alpha.mp4" aria-label="Men raising the Joveyra flag"></canvas>
+  <script src="flag-alpha.js" defer></script>
+</body>
+</html>
