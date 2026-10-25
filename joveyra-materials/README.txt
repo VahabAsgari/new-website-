@@ -1,24 +1,29 @@
-Joveyra - approved materials (final grades)
+JOVEYRA - FINAL AGREED MATERIALS
+================================
 
-1-satellite   Hero film, original colour. 16 s loop, 25 fps.
-  sat.webm         VP9  1920x1080   best quality/size, use first
-  sat.mp4          H.264 1920x1080  fallback for Safari/older devices
-  sat-1280.mp4     H.264 1280x720   phones
-  sat-poster.webp  1600x900         first-frame still
+Colour
+  - 1-satellite : full colour (ATV orbit, agreed lighting). NOT graded.
+  - everything else : the blue grade approved on the flag.
+  - 6-sr71-rotation : the original Google Drive file, unchanged.
 
-2-flag        Flag film, blue engraving on dark (the approved grade). 7 s loop, 10 fps.
-  flag.webm / flag.mp4   1800x1240
-  flag-1280.mp4          1280x882   phones
-  flag-poster.webp       1800x1240
-  flag-800/1600/1800.webp  still image in three widths
+Folders
+  1-satellite/      hero loop, 1920x1080, 25 fps, 30 s seamless loop
+  2-flag/           flag stills (800 / 1600 / 1800) + flag video loop
+  3-dish/           radio dish engraving (800 / 1600 / 2160)
+  4-sr71-fire/      SR-71 afterburner loop (closing section)
+  5-sr71-stills/    SR-71 tail view + top view (800 / 1080)
+  6-sr71-rotation/  SR-71 rotation, original (HEVC + AV1)
 
-3-dish        Radio-dish engraving, same blue grade. Still image.
-  dish-800 / 1600 / 2160.webp  (1600x1747 is the main size)
+Formats
+  Video : .webm (VP9)        - use first, smallest file
+          .mp4  (H.264)      - fallback for Safari / older browsers
+          -1280.mp4          - mobile version (screens up to 900px)
+          -poster.webp       - first frame, shown while the video loads
+  Stills: .webp, quality 86, in several widths for srcset
 
-4-sr71-fire   SR-71 tail fire, same blue grade. 10 s loop, 30 fps.
-  sr71-fire.webm / .mp4   2380x1414 (wider than the screen on purpose)
-  sr71-fire-1280.mp4      1280x760  phones
-  sr71-fire-poster.webp   2380x1413
-
-Formats: WebM (VP9) is the smallest at full quality; MP4 (H.264) plays everywhere;
-WebP stills. All videos are silent and loop seamlessly.
+Usage in HTML
+  <video muted playsinline loop autoplay poster="sat-poster.webp">
+    <source src="sat-1280.mp4" type="video/mp4" media="(max-width: 900px)">
+    <source src="sat.webm" type="video/webm">
+    <source src="sat.mp4" type="video/mp4">
+  </video>
